@@ -6,6 +6,23 @@ Credit to this forum post on the ComputerCraft forums, all files in the lib fold
 
 I have modified this, and made it download the files from my GitHub.
 
+### Setting up capsule
+To setup the Capsule package manager on a computer.
+
+1. Run the installer from my Github, otherwise it won't download the library files: `wget run https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/capsule.lua`
+
+2. Then, install it from my GitHub to the root of your computer: `wget https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/capsule.lua`
+
+I normally add this to my startup.lua on the root of a computer:
+```lua
+-- This is mostly for the capsule programs.
+if fs.exists("/usr/bin") then
+    shell.setPath(shell.path() .. ":/usr/bin")
+end
+```
+
+Which adds the `/usr/bin` folder to the path, so you don't have to switch to that directory each time to run the programs.
+
 ### Using capsule
 To use the capsule package manager
 

@@ -8,6 +8,11 @@
 -- Now this is setup to download the files from my Github.
 local local_repo = "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main"
 
+-- These below get added when running this
+-- wget run https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/capsule.lua
+-- Download source format (from the Github repo): local_repo/lib/file
+-- Computer destination format (Path this gets set to in the computer): /lib/
+
 if not fs.exists("/lib/stringbuilder.lua") then
     shell.run("wget "  .. local_repo .. "/lib/" .. "/stringbuilder.lua" .. " /lib/stringbuilder.lua")
 end
@@ -35,17 +40,17 @@ end
 -- New, created by kelson8
 -- Monitor util
 if not fs.exists("/lib/util/monitor_util.lua") then
-    shell.run("wget " .. local_repo .. "/lib/" .. "/util/monitor_util.lua" .. " /lib/util/monitor_util.lua")
+    shell.run("wget " .. local_repo .. "/lib" .. "/util/monitor_util.lua" .. " /lib/util/monitor_util.lua")
 end
 
 -- Text file util
 if not fs.exists("/lib/util/text_util.lua") then
-    shell.run("wget " .. "/lib/" .. local_repo .. "/util/text_util.lua" .. " /lib/util/text_util.lua")
+    shell.run("wget " .. local_repo .. "/lib" .. "/util/text_util.lua" .. " /lib/util/text_util.lua")
 end
 
 -- Hash util
 if not fs.exists("/lib/util/hash_util.lua") then
-    shell.run("wget " .. "/lib/" .. local_repo .. "/util/hash_util.lua" .. " /lib/util/hash_util.lua")
+    shell.run("wget " .. local_repo .. "/lib" .. "/util/hash_util.lua" .. " /lib/util/hash_util.lua")
 end
 --
 
