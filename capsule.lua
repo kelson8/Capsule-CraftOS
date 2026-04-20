@@ -6,48 +6,36 @@
 -- this part will check if libs exists, if not, download them
 
 -- Now this is setup to download the files from my Github.
-local local_repo = "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src"
+local local_repo = "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main"
 
 if not fs.exists("/lib/stringbuilder.lua") then
-    -- shell.run("pastebin get KUjYeHfm /lib/stringbuilder.lua")
-    shell.run("wget " .. "/lib/" .. local_repo .. "/stringbuilder.lua" .. " /lib/stringbuilder.lua")
+    shell.run("wget "  .. local_repo .. "/lib/" .. "/stringbuilder.lua" .. " /lib/stringbuilder.lua")
 end
 
 if not fs.exists("/lib/print-utils.lua") then
-    -- shell.run("pastebin get TQxHVC6D /lib/print-utils.lua")
-    shell.run("wget " .. "/lib/" .. local_repo .. "/print-utils.lua" .. " /lib/print-utils.lua")
+    shell.run("wget " .. local_repo .. "/lib/" .. "/print-utils.lua" .. " /lib/print-utils.lua")
 end
 
 if not fs.exists("/lib/crypto/sha2.lua") then
-    -- shell.run("pastebin get bmE3aTzv /lib/crypto/sha2.lua")
-    shell.run("wget " .. "/lib/" .. local_repo .. "/crypto/sha2.lua" .. " /lib/crypto/sha2.lua")
-end
-
--- Why is stringbuilder listed twice?
-if not fs.exists("/lib/stringbuilder.lua") then
-    -- shell.run("pastebin get KUjYeHfm /lib/stringbuilder.lua")
-    shell.run("wget " .. "/lib/" .. local_repo .. "/stringbuilder.lua" .. " /lib/stringbuilder.lua")
+    shell.run("wget " .. local_repo .. "/lib/" .. "/crypto/sha2.lua" .. " /lib/crypto/sha2.lua")
 end
 
 if not fs.exists("/lib/config.lua") then
-    -- shell.run("pastebin get v5XWn99E /lib/config.lua")
-    shell.run("wget " .. "/lib/" .. local_repo .. "/config.lua" .. " /lib/config.lua")
+    shell.run("wget "  .. local_repo .. "/lib/" .. "/config.lua"  .. " /lib/config.lua")
 end
 
 if not fs.exists("/lib/args.lua") then
-    -- shell.run("pastebin get swWJdc7X /lib/args.lua")
-    shell.run("wget " .. "/lib/" .. local_repo .. "/args.lua" .. " /lib/args.lua")
+    shell.run("wget " .. local_repo .. "/lib/" .. "/args.lua" .. " /lib/args.lua")
 end
 
 if not fs.exists("/lib/logger.lua") then
-    -- shell.run("pastebin get abFf6TPB /lib/logger.lua")
-    shell.run("wget " .. "/lib/" .. local_repo .. "/logger.lua" .. " /lib/logger.lua")
+    shell.run("wget " .. local_repo .. "/lib/" .. "/logger.lua" .. " /lib/logger.lua")
 end
 
 -- New, created by kelson8
 -- Monitor util
 if not fs.exists("/lib/util/monitor_util.lua") then
-    shell.run("wget " .. "/lib/" .. local_repo .. "/util/monitor_util.lua" .. " /lib/util/monitor_util.lua")
+    shell.run("wget " .. local_repo .. "/lib/" .. "/util/monitor_util.lua" .. " /lib/util/monitor_util.lua")
 end
 
 -- Text file util
@@ -72,7 +60,7 @@ local logs = require("/lib/logger")
 
 -- here you can check repo structure if you want to repo yourself
 --local DEFAULT_REPOSITORY = "https://github.com/zimavi/cc_pacman_api/raw/main/repo.json"
-local DEFAULT_REPOSITORY = "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/repo.json"
+local DEFAULT_REPOSITORY = "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/repo.json"
 
 local repo_path = "/etc/capsule/repository.json"
 local packages_path = "/etc/capsule/package.list"
