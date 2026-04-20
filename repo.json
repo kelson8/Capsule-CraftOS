@@ -1,0 +1,99 @@
+[
+    {
+        "name": "test",
+        "author": "zimavi",
+        "version": {
+            "major": 1,
+            "minor": 1,
+            "patch": 0
+        },
+        "desc": "Simple Lua hello world program for testing purpose",
+        "checksum": "07277c9649d165fde4d288bfde6781f582d9472b2e59d08d094215b87eeaf17a",
+        "dwn_lnk": "https://raw.githubusercontent.com/zimavi/cc_pacman_api/main/test.lua"
+    },
+    {
+        "name": "browser.lua",
+        "author": "zimavi",
+        "version": {
+            "major": 1,
+            "minor": 0,
+            "patch": 0
+        },
+        "desc": "Lua internet browser that supports colors and links",
+        "checksum": "bd139c716357710c6b581fbf91f2a84ac889afb888c6310f6397b59d79471b00",
+        "dwn_lnk": "https://pastebin.com/raw/n0TYWPg0"
+    },
+    {
+        "name": "player.lua",
+        "author": "zimavi",
+        "version": {
+            "major": 1,
+            "minor": 0,
+            "patch": 0
+        },
+        "desc": "Lua music player that works with DFPWM audio files",
+        "checksum": "9fb77033f70ad2fd037c9029bd1f1b868b7a928fcc62a07c6b4579859a06edad",
+        "dwn_lnk": "https://pastebin.com/raw/pwwiMsxF"
+    },
+    {
+        "name": "capsule.lua",
+        "author": "zimavi",
+        "version": {
+            "major": 1,
+            "minor": 0,
+            "patch": 0
+        },
+        "desc": "CC Tweaked Package Manager",
+        "checksum": "d2b3185f8583ce8969fdea251cd3bfdddbdba3cf901acf92878b94cbfee203e0",
+        "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/capsule.lua"
+    },
+
+    {
+        "name": "generator_ui.lua",
+        "author": "kelson8",
+        "version": {
+            "major": 1,
+            "minor": 1,
+            "patch": 0
+        },
+        "desc": "Generator UI for redstone link management, for use with Create Power Grid mod",
+        "checksum": "cade8facc28545173145e4d7080ef86515f203e5999ac17f0d63d33ad1b19818",
+        "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/generator_ui.lua"
+    },
+    {
+        "name": "display_disk_space.lua",
+        "author": "kelson8",
+        "version": {
+            "major": 1,
+            "minor": 0,
+            "patch": 0
+        },
+        "desc": "Display free space on a computer internal storage and floppy disk if inserted",
+        "checksum": "7ce254a5aef05cb7bdd978810a9e640b15e1b25ce9a220d66c67e2e46e0746f7",
+        "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/display_disk_space.lua"
+    },
+    {
+        "name": "monitor_test.lua",
+        "author": "kelson8",
+        "version": {
+            "major": 1,
+            "minor": 0,
+            "patch": 0
+        },
+        "desc": "Monitor testing, this uses my new monitor_util lib.",
+        "checksum": "cf70131d249d0308527e187a3069203af69100d466e22edc24fdba686ad2b645",
+        "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/monitor_test.lua"
+    },
+    {
+        "name": "chacha20-test.lua",
+        "author": "kelson8",
+        "version": {
+            "major": 1,
+            "minor": 0,
+            "patch": 0
+        },
+        "desc": "Testing with chacha20 encryption and writing the values to a file.",
+        "checksum": "455785bbe73101c611496b46b75709ea20f2a84f2445bbd85db749ea8d49874f",
+        "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/chacha20-test.lua"
+    }
+]
