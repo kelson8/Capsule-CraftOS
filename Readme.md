@@ -48,7 +48,7 @@ To display the current version for capsule.lua: `capsule version`
 
 **Files in project**
 
-**Root folder**
+**Src folder**
 
 | Filename | Description |
 | --------- | ----------- |
