@@ -1,10 +1,6 @@
 # Capsule package manager for CC Tweaked
 This is a package manager for the CC Tweaked Minecraft mod, this also work on CraftOS-PC on the desktop.
 
-Credit to this forum post on the ComputerCraft forums, all files in the lib folder except for the util folder, capsule.lua, and repo.json are from here.
-* https://forums.computercraft.cc/index.php?topic=652.0
-
-I have modified this, and made it download the files from my GitHub.
 
 ### Setting up capsule
 To setup the Capsule package manager on a computer.
@@ -65,6 +61,7 @@ To display the current version for capsule.lua: `capsule version`
 | Filename | Description |
 | --------- | ----------- |
 | args.lua | Argument parser functions. |
+| basalt.lua | Basalt UI library, licensed under MIT. |
 | config.lua | Looks like this is for the values from the `package.list` file. |
 | logger.lua | Logging to a file and to the console, used in `capsule.lua`. |
 | print-utils.lua | For the scrolling text in `capsule.lua` |
@@ -95,3 +92,17 @@ Here is an example using my Github. Set the name, author, version, description, 
         "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/display_disk_space.lua"
     },
 ```
+
+# Credits
+
+Credit to this forum post on the ComputerCraft forums, some in the lib folder except for the util folder, capsule.lua, and repo.json are from here.
+
+List of files that came from here:
+crypto/sha2.lua, args.lua, config.lua, logger.lua, print-utils.lua, and stringbuilder.lua.
+
+Computer Craft forum post about capsule.
+* https://forums.computercraft.cc/index.php?topic=652.0
+
+I have modified this, and made it download the files from my GitHub.
+
+Credit goes to Pyroxenium for the [Basalt2](https://github.com/Pyroxenium/Basalt2) UI library in `/lib/basalt.lua`.
