@@ -5,9 +5,9 @@ This is a package manager for the CC Tweaked Minecraft mod, this also work on Cr
 ### Setting up capsule
 To setup the Capsule package manager on a computer.
 
-1. Run the installer from my Github, otherwise it won't download the library files: `wget run https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/capsule.lua`
+1. Run the installer from my Github, otherwise it won't download the library files: `wget run https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/capsule.lua`
 
-2. Then, install it from my GitHub to the root of your computer: `wget https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/capsule.lua`
+2. Then, install it from my GitHub to the root of your computer: `wget https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/capsule.lua`
 
 3. Lastly, run the `capsule update` command to update the repository list.
 
