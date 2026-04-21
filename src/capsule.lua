@@ -8,6 +8,11 @@
 -- Now this is setup to download the files from my Github.
 local local_repo = "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main"
 
+-- Download capsule to the root of the system.so it doesn't require another command.
+if not fs.exists("/capsule.lua") then
+    shell.run("wget " .. local_repo .. "/capsule.lua" .. "/capsule.lua")
+end
+
 -- These below get added when running this
 -- wget run https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/capsule.lua
 -- Download source format (from the Github repo): local_repo/lib/file
@@ -84,6 +89,9 @@ local tmp_toString = function (t)
     return string.format("v%s.%s.%s", t.major, t.minor, t.patch)
 end
 
+-- Check if the version of software installed is update to date
+-- @param repo_ver string? The remote repository version to check for updates from.
+-- @param installed_ver string? The installed version to check.
 local function isRepoVerNewer(repo_ver, installed_ver)
     if repo_ver.major > installed_ver.major then
         return true
@@ -96,6 +104,7 @@ local function isRepoVerNewer(repo_ver, installed_ver)
     return false
 end
 
+-- Show a list of all available packages from the Capsule repository.
 local function showAvailableList()
     if not fs.exists(repo_path) then
         logs.critical("Cannot load repository. (Perhaps time to 'update'?)")
@@ -133,6 +142,7 @@ local function showAvailableList()
     return sb:toString("\n")
 end
 
+-- Show the list of currently installed packages.
 local function showInstalledList()
     if not fs.exists(repo_path) then
         logs.critical("Cannot load repository. (Perhaps time to 'update'?)")
@@ -189,6 +199,7 @@ local function showInstalledList()
     return sb:toString("\n")
 end
 
+-- Show all packages in the repository.
 local function showAllPackages()
     if not fs.exists(repo_path) then
         logs.critical("Cannot load repository. (Perhaps time to 'update'?)")
@@ -256,6 +267,9 @@ local function showAllPackages()
     return sb:toString("\n")
 end
 
+-- Display the list with command arguments.
+-- Usage: getRepositoryList(--installed, --available, --all)
+-- @param params string The package list to check.
 local function getRepositoryList(params)
     local installedOnly = params[1]
     local availableOnly = params[2]
@@ -275,10 +289,13 @@ local function getRepositoryList(params)
     end
 end
 
+-- Display a list of items in the repository
+-- @param repoList string List of repos to display.
 local function displayRepositoryList(repoList)
     lib_print.scrollText(repoList, 15)
 end
 
+-- Display the help message for Capsule.
 local function displayHelpMessage()
     local sb = stringBuilder()
     sb:append("Capsule - CC:Tweaked package manager used by DiamondOS")
@@ -305,6 +322,8 @@ local function displayHelpMessage()
     lib_print.scrollText(str, 11)
 end
 
+-- Update the repository
+-- @param repository string The repository to update.
 local function updateRepository(repository)
     -- check if no provided repository
     if repository == nil then
@@ -334,6 +353,8 @@ local function updateRepository(repository)
     logs.info("Fetched repository successfully.")
 end
 
+-- Install a package
+-- @param package_name string The name of the package to install.
 local function installPackage(package_name)
 
     local handle = fs.open(repo_path, "r")
@@ -431,6 +452,9 @@ local function installPackage(package_name)
 
 end
 
+-- Calculate a file checksum.
+-- @param path string The file to get the SHA256 checksum for.
+-- @return string The SHA256 checksum for the file.
 local function calculateChecksum(path)
     if not fs.exists(path) then
         logs.critical("File not found.")
@@ -463,6 +487,9 @@ local function calculateChecksum(path)
     
 end
 
+-- Redownload a file
+-- @param package_url The url of the file.
+-- @param package_checksum The SHA256 checksum of the file.
 local function redownloadFile(package_url, package_checksum)
 
     local attempts = 1
@@ -501,6 +528,8 @@ local function redownloadFile(package_url, package_checksum)
     return data
 end
 
+-- Validate a package and its SHA256 checksum with the one from the remote repo.json.
+-- @param package_name The name of the package to validate.
 local function validatePackage(package_name)
     if not fs.exists(packages_path) then
         logs.critical("No packages installed.")
@@ -551,6 +580,8 @@ local function validatePackage(package_name)
     end
 end
 
+-- Remove a package from Capsule, removes it from /usr/bin
+-- @param package_name The package to remove.
 local function removePackage(package_name)
     if not fs.exists(packages_path) then
         logs.critical("No packages installed.")
@@ -579,6 +610,7 @@ local function removePackage(package_name)
     logs.info("Done.")
 end
 
+-- Uprade all Capsule packages.
 local function upgradePackages()
     if not fs.exists(packages_path) then
         logs.critical("No packages installed.")
@@ -687,6 +719,7 @@ end
 -- Init code
 setmetatable(version, {__tostring = tmp_toString})
 
+-- Argument parsers
 local args_parser = lib_args:new()
 
 args_parser:addFlag("version")
@@ -718,6 +751,10 @@ args_parser:parse({ ... })
 
 local flags = args_parser:getFlags()
 local options = args_parser:getOptions()
+
+---
+-- Command Arguments
+---
 
 if flags["version"] then
     print("Capsule "..tostring(version))
@@ -774,4 +811,6 @@ if options["remove"] then
     return
 end
 
+-- Always display the help message
+-- TODO Add a toggle for this later.
 displayHelpMessage()

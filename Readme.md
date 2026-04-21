@@ -13,6 +13,8 @@ To setup the Capsule package manager on a computer.
 
 2. Then, install it from my GitHub to the root of your computer: `wget https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/capsule.lua`
 
+3. Lastly, run the `capsule update` command to update the repository list.
+
 I normally add this to my startup.lua on the root of a computer:
 ```lua
 -- This is mostly for the capsule programs.
