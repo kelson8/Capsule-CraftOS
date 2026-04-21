@@ -51,16 +51,29 @@
         "checksum": "cf70131d249d0308527e187a3069203af69100d466e22edc24fdba686ad2b645",
         "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/monitor_test.lua"
     },
+
     {
-        "name": "chacha20-test",
+        "name": "chacha20-text",
         "author": "kelson8",
         "version": {
             "major": 1,
             "minor": 0,
             "patch": 0
         },
-        "desc": "Testing with chacha20 encryption and writing the values to a file.",
-        "checksum": "455785bbe73101c611496b46b75709ea20f2a84f2445bbd85db749ea8d49874f",
-        "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/chacha20-test.lua"
+        "desc": "Chacha20 encryption and decryption.",
+        "checksum": "fb9c3f9dc5e69b7afb083e86f137eaac4a32b60788d7dc017bd453cb974652af",
+        "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/encryption/chacha20-text.lua"
+    },
+    {
+        "name": "secp256k1-test.lua",
+        "author": "kelson8",
+        "version": {
+            "major": 1,
+            "minor": 0,
+            "patch": 0
+        },
+        "desc": "Secp256k1 encryption and decryption.",
+        "checksum": "e6798771eae24a52007e71b0ca6a87e7b606971ddc51c35ebdfc0ef716f315fc",
+        "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/encryption/secp256k1-test.lua"
     }
 ]
