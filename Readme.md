@@ -21,6 +21,8 @@ end
 
 Which adds the `/usr/bin` folder to the path, so you don't have to switch to that directory each time to run the programs.
 
+You can also copy the [extras/startup.lua](https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/extras/startup.lua) file into the root of your computer, this file will also clear the monitor if it finds one.
+
 ### Using capsule
 To use the capsule package manager
 
