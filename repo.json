@@ -57,11 +57,11 @@
         "author": "kelson8",
         "version": {
             "major": 1,
-            "minor": 0,
+            "minor": 1,
             "patch": 0
         },
         "desc": "Chacha20 encryption and decryption.",
-        "checksum": "fb9c3f9dc5e69b7afb083e86f137eaac4a32b60788d7dc017bd453cb974652af",
+        "checksum": "455785bbe73101c611496b46b75709ea20f2a84f2445bbd85db749ea8d49874f",
         "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/encryption/chacha20-text.lua"
     },
     {

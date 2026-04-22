@@ -1,5 +1,8 @@
 local table = table;
 
+-- Source for file
+-- https://pastebin.com/KUjYeHfm
+
 local stringBuilder = {}
 
 setmetatable(stringBuilder, {

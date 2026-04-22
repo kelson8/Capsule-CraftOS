@@ -1,5 +1,8 @@
 local utils = {}
 
+-- Source for file
+-- https://pastebin.com/TQxHVC6D
+
 function utils.scrollText(text, pageSize)
     pageSize = pageSize or 10
     local lines = {}

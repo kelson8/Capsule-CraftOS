@@ -52,10 +52,11 @@ To display the current version for capsule.lua: `capsule version`
 
 | Filename | Description |
 | --------- | ----------- |
-| chacha20-test.lua  | Testing with chacha20 encryption, writing the encrypted password and nonce as hexadecimal to encrypted_string.txt on a Computer. |
+| chacha20-text.lua  | Chacha20 encryption/decryption, takes either a `decrypt` or `encrypt` argument. |
 | display_disk_space.lua | |
 | generator_ui.lua | This is mostly for turning on/off my generator created with Create Power grid, all it does is turn on/off a redstone link and store the value of the status into `/disk/generator_status.txt` |
 | monitor_test.lua | Basic test to write to the bottom center of a monitor. |
+
 
 **Lib folder**
 | Filename | Description |
@@ -104,5 +105,7 @@ Computer Craft forum post about capsule.
 * https://forums.computercraft.cc/index.php?topic=652.0
 
 I have modified this, and made it download the files from my GitHub.
+
+All source files in the `lib` folder that were not created by me have been labeled with their pastebin sources.
 
 Credit goes to Pyroxenium for the [Basalt2](https://github.com/Pyroxenium/Basalt2) UI library in `/lib/basalt.lua`.

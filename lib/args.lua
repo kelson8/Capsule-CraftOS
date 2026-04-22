@@ -1,5 +1,8 @@
 local parser = {}
 
+-- Source https://pastebin.com/swWJdc7X
+-- Argument parser
+
 function parser:new()
     local obj = {
         flags = {},

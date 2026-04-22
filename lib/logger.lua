@@ -1,5 +1,10 @@
 local logger = {}
 
+-- Source
+-- https://pastebin.com/abFf6TPB
+
+-- Logger util for Capsule
+
 logger.levels = {
     DEBUG = {"DEBUG", 1},
     INFO = {"INFO", 2},
