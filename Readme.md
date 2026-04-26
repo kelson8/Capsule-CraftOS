@@ -67,6 +67,7 @@ To display the current version for capsule.lua: `capsule version`
 | basalt.lua | Basalt UI library, licensed under MIT. |
 | config.lua | Looks like this is for the values from the `package.list` file. |
 | logger.lua | Logging to a file and to the console, used in `capsule.lua`. |
+| json.lua | JSON lua library, this isn't properly setup in the packages just yet. |
 | print-utils.lua | For the scrolling text in `capsule.lua` |
 | stringbuilder.lua | Stringbuilder library. |
 | crypto/sha2.lua | SHA2 hashing utility. |
@@ -74,6 +75,10 @@ To display the current version for capsule.lua: `capsule version`
 | utils/monitor_util | Write to center, and write to specific spot on monitor functions. |
 | utils/text_util | So far, just reading lines from text files. |
 
+**Refined Storage folder**
+| Filename | Description |
+| --------- | ----------- |
+| rs-json-test.lua | This is a test with Refined Storage, Advanced Peripherals and the Computer Craft mods. |
 
 ## Adding files to capsule
 
@@ -111,3 +116,5 @@ I have modified this, and made it download the files from my GitHub.
 All source files in the `lib` folder that were not created by me have been labeled with their pastebin sources.
 
 Credit goes to Pyroxenium for the [Basalt2](https://github.com/Pyroxenium/Basalt2) UI library in `/lib/basalt.lua`.
+
+Credit to tylerneylon for the lua [JSON](https://gist.github.com/tylerneylon/59f4bcf316be525b30ab) library.

@@ -75,5 +75,31 @@
         "desc": "Secp256k1 encryption and decryption.",
         "checksum": "e6798771eae24a52007e71b0ca6a87e7b606971ddc51c35ebdfc0ef716f315fc",
         "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/encryption/secp256k1-test.lua"
+    },
+
+    {
+        "name": "rs-json-test",
+        "author": "kelson8",
+        "version": {
+            "major": 1,
+            "minor": 0,
+            "patch": 0
+        },
+        "desc": "Refined Storage and Advanced Peripherals testing.",
+        "checksum": "89bb68d73ea78791e659bae62988fd09e3edb46af794da861814193f957c5a42",
+        "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/RefinedStorage/rs-json-test.lua"
+    },
+
+    {
+        "name": "json",
+        "author": "tylerneylon",
+        "version": {
+            "major": 1,
+            "minor": 0,
+            "patch": 0
+        },
+        "desc": "JSON library for lua.",
+        "checksum": "7fcccd97834b022b172c7edd597dc2fa35d50f5d01491a2eeb1fe09a80483472",
+        "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/lib/json.lua"
     }
 ]
