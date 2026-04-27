@@ -4,7 +4,9 @@ This is a package manager for the CC Tweaked Minecraft mod, this also work on Cr
 # Things to do
 Here are some things that I need to setup and work on for this project:
 * Setup automatic SHA256 hash generation, for easily updating hashes in the repo.json.
-* 
+* Make this have an easy way to add packages to the `repo.json` file.
+* Setup some type of GUI or UI to manage the repo.json file, that shouldn't be too hard.
+* Remove goto statements in `capsule.lua` and replace them with something else.
 
 ### Setting up capsule
 To setup the Capsule package manager on a computer.
