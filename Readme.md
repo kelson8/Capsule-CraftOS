@@ -79,6 +79,8 @@ To display the current version for capsule.lua: `capsule version`
 | Filename | Description |
 | --------- | ----------- |
 | rs-json-test.lua | This is a test with Refined Storage, Advanced Peripherals and the Computer Craft mods. |
+| rednet-client.lua | This is a rednet client that goes on a system with Advanced Peripherals, wireless/wired modem, and an RS Bridge for sending Refined Storage values to another computer, I may need to rename this to `rednet-server.lua`. |
+| rednet-server.lua | This is a rednet server that goes on a system with a monitor attached, and a wireless/wired modem attached. |
 
 ## Adding files to capsule
 
@@ -118,3 +120,5 @@ All source files in the `lib` folder that were not created by me have been label
 Credit goes to Pyroxenium for the [Basalt2](https://github.com/Pyroxenium/Basalt2) UI library in `/lib/basalt.lua`.
 
 Credit to tylerneylon for the lua [JSON](https://gist.github.com/tylerneylon/59f4bcf316be525b30ab) library.
+
+Credit to Commandcracker for the new [Logger](https://github.com/Commandcracker/CC-Logging) library for lua under `lib/NewLogger`.
