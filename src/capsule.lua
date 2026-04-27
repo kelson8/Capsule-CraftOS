@@ -418,7 +418,7 @@ local function installPackage(package_name)
 
     local checksum = lib_sha.sha256(data)
 
-    if checksum ~= package.checksum then
+    if string.lower(checksum) ~= string.lower(package.checksum) then
         logs.error("File checksum validation failed: Missmatch")
         logs.info("Going to attempt " .. attempts .. "/3")
         attempts = attempts + 1
@@ -544,7 +544,7 @@ local function redownloadFile(package_url, package_checksum)
 
     local checksum = lib_sha.sha256(data)
 
-    if checksum ~= package_checksum then
+    if string.lower(checksum) ~= string.lower(package.checksum) then
         logs.error("File checksum validation failed: Missmatch")
         logs.info("Going to attempt " .. attempts .. "/3")
         attempts = attempts + 1
@@ -595,7 +595,7 @@ local function validatePackage(package_name)
 
     local checksum = lib_sha.sha256(data)
 
-    if checksum ~= package.checksum then
+    if string.lower(checksum) ~= string.lower(package.checksum) then
         logs.error("File checksum validation failed: Missmatch")
         logs.info("File will be redownload")
         data = redownloadFile(package.lnk, package.checksum)
@@ -710,7 +710,7 @@ local function upgradePackages()
 
                     local checksum = lib_sha.sha256(data)
 
-                    if checksum ~= p.checksum then
+                    if string.lower(checksum) ~= string.lower(package.checksum) then
                         logs.error("File checksum validation failed: Missmatch")
                         logs.info("Going to attempt " .. attempts .. "/3")
                         attempts = attempts + 1
