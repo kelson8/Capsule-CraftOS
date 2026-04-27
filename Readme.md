@@ -1,6 +1,10 @@
 # Capsule package manager for CC Tweaked
 This is a package manager for the CC Tweaked Minecraft mod, this also work on CraftOS-PC on the desktop.
 
+# Things to do
+Here are some things that I need to setup and work on for this project:
+* Setup automatic SHA256 hash generation, for easily updating hashes in the repo.json.
+* 
 
 ### Setting up capsule
 To setup the Capsule package manager on a computer.
@@ -30,6 +34,8 @@ To use the capsule package manager
 
 You can use `capsule install package-name.lua` on a ComputerCraft computer, replace `package-name.lua` with a value from the `repo.json`. 
 
+This now installs libraries to the `/lib` folder.
+
 **List packages**
 
 To list installed package, use `capsule list --installed`, this will display a list of all packages installed with Capsule package manager.
@@ -45,6 +51,22 @@ To update all packages out of date: `capsule upgrade`
 **Display capsule version**
 
 To display the current version for capsule.lua: `capsule version`
+
+### Capsule list of packages
+This is a list of packages that can be installed with `capsule install`.
+Package descriptions are in the Capsule files section below.
+
+**Programs**
+* chacha20-text
+* display_disk_space
+* generator_ui
+* monitor_test
+* secp256k1-test
+* rs-json-test
+
+**Libraries**
+* json
+
 
 ### Capsule files
 
@@ -86,7 +108,9 @@ To display the current version for capsule.lua: `capsule version`
 
 You can add lua files to be downloaded into the `repo.json` file.
 
-Here is an example using my Github. Set the name, author, version, description, SHA-256 checksum and download link.
+Here is an example using my Github. Set the name, author, version, description, SHA-256 checksum download link, and category.
+
+The category can either be `program` or `library`, if it's set to program, then it installs to `/usr/bin`, otherwise if its set to library, it installs to `/lib`
 
 ```json
     {
@@ -99,7 +123,8 @@ Here is an example using my Github. Set the name, author, version, description, 
         },
         "desc": "Display free space on a computer internal storage and floppy disk if inserted",
         "checksum": "7ce254a5aef05cb7bdd978810a9e640b15e1b25ce9a220d66c67e2e46e0746f7",
-        "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/display_disk_space.lua"
+        "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/display_disk_space.lua",
+        "category": "program"
     },
 ```
 

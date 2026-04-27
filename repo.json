@@ -9,7 +9,8 @@
         },
         "desc": "Basalt UI library, licensed under MIT.",
         "checksum": "1885c88b48ff55a12d6648a44d89c2418bf920f15f62713c74217a368c00d887",
-        "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/lib/basalt.lua"
+        "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/lib/basalt.lua",
+        "category": "library"
     },
 
 
@@ -22,8 +23,9 @@
             "patch": 0
         },
         "desc": "Generator UI for redstone link management, for use with Create Power Grid mod",
-        "checksum": "cade8facc28545173145e4d7080ef86515f203e5999ac17f0d63d33ad1b19818",
-        "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/generator_ui.lua"
+        "checksum": "CADE8FACC28545173145E4D7080EF86515F203E5999AC17F0D63D33AD1B19818",
+        "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/generator_ui.lua",
+        "category": "program"
     },
 
 
@@ -36,8 +38,9 @@
             "patch": 0
         },
         "desc": "Display free space on a computer internal storage and floppy disk if inserted",
-        "checksum": "7ce254a5aef05cb7bdd978810a9e640b15e1b25ce9a220d66c67e2e46e0746f7",
-        "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/display_disk_space.lua"
+        "checksum": "CE7A8040FB0EA62961645076664109E5FC6149740CD6D5FC50151536134AD4C6",
+        "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/display_disk_space.lua",
+        "category": "program"
     },
     {
         "name": "monitor_test",
@@ -48,8 +51,9 @@
             "patch": 0
         },
         "desc": "Monitor testing, this uses my new monitor_util lib.",
-        "checksum": "cf70131d249d0308527e187a3069203af69100d466e22edc24fdba686ad2b645",
-        "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/monitor_test.lua"
+        "checksum": "DA1BC4C04090B1862F23E9465BF40F827CB6D7B74B09599AE814C81340EEEBFF",
+        "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/monitor_test.lua",
+        "category": "program"
     },
 
     {
@@ -61,11 +65,12 @@
             "patch": 0
         },
         "desc": "Chacha20 encryption and decryption.",
-        "checksum": "455785bbe73101c611496b46b75709ea20f2a84f2445bbd85db749ea8d49874f",
-        "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/encryption/chacha20-text.lua"
+        "checksum": "B2C33E04986A4543ACF45114093F133A28AB673FAE8965BB0BF225703DB960B1",
+        "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/encryption/chacha20-text.lua",
+        "category": "program"
     },
     {
-        "name": "secp256k1-test.lua",
+        "name": "secp256k1-test",
         "author": "kelson8",
         "version": {
             "major": 1,
@@ -73,8 +78,9 @@
             "patch": 0
         },
         "desc": "Secp256k1 encryption and decryption.",
-        "checksum": "e6798771eae24a52007e71b0ca6a87e7b606971ddc51c35ebdfc0ef716f315fc",
-        "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/encryption/secp256k1-test.lua"
+        "checksum": "D7F6C2A72D7A4F39BD42D0D8BA60D5B36540E9F67CD21557554F6402675921FA",
+        "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/encryption/secp256k1-test.lua",
+        "category": "program"
     },
 
     {
@@ -86,8 +92,9 @@
             "patch": 0
         },
         "desc": "Refined Storage and Advanced Peripherals testing.",
-        "checksum": "89bb68d73ea78791e659bae62988fd09e3edb46af794da861814193f957c5a42",
-        "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/RefinedStorage/rs-json-test.lua"
+        "checksum": "6201389120EA0DB66D0BA5E5D0EEA5541307A5C46431BCCA51039DAD14A03724",
+        "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/src/RefinedStorage/rs-json-test.lua",
+        "category": "program"
     },
 
     {
@@ -99,7 +106,8 @@
             "patch": 0
         },
         "desc": "JSON library for lua.",
-        "checksum": "7fcccd97834b022b172c7edd597dc2fa35d50f5d01491a2eeb1fe09a80483472",
-        "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/lib/json.lua"
+        "checksum": "7FCCCD97834B022B172C7EDD597DC2FA35D50F5D01491A2EEB1FE09A80483472",
+        "dwn_lnk": "https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/lib/json.lua",
+        "category": "library"
     }
 ]

@@ -13,13 +13,18 @@ if not fs.exists("/capsule.lua") then
     shell.run("wget " .. local_repo .. "/capsule.lua" .. "/capsule.lua")
 end
 
+-- Now this automatically installs library files to /lib when using 'capsule install'.
+-- And it also verifies the checksum for the library files.
+
+-- 
+
 -- These below get added when running this
 -- wget run https://raw.githubusercontent.com/kelson8/Capsule-CraftOS/refs/heads/main/capsule.lua
 -- Download source format (from the Github repo): local_repo/lib/file
 -- Computer destination format (Path this gets set to in the computer): /lib/
 
 if not fs.exists("/lib/stringbuilder.lua") then
-    shell.run("wget "  .. local_repo .. "/lib/" .. "/stringbuilder.lua" .. " /lib/stringbuilder.lua")
+    shell.run("wget " .. local_repo .. "/lib/" .. "/stringbuilder.lua" .. " /lib/stringbuilder.lua")
 end
 
 if not fs.exists("/lib/print-utils.lua") then
@@ -31,7 +36,7 @@ if not fs.exists("/lib/crypto/sha2.lua") then
 end
 
 if not fs.exists("/lib/config.lua") then
-    shell.run("wget "  .. local_repo .. "/lib/" .. "/config.lua"  .. " /lib/config.lua")
+    shell.run("wget " .. local_repo .. "/lib/" .. "/config.lua" .. " /lib/config.lua")
 end
 
 if not fs.exists("/lib/args.lua") then
@@ -75,17 +80,19 @@ local DEFAULT_REPOSITORY = "https://raw.githubusercontent.com/kelson8/Capsule-Cr
 local repo_path = "/etc/capsule/repository.json"
 local packages_path = "/etc/capsule/package.list"
 local install_path = "/usr/bin/"
+-- New path for installing libraries to.
+local library_install_path = "/lib"
 
 -- define version struct
 -- Was originally 1.0.0
 local version = {
     major = 1,
     minor = 1,
-    patch = 0,
+    patch = 1
 }
 
 -- version to string function
-local tmp_toString = function (t)
+local tmp_toString = function(t)
     return string.format("v%s.%s.%s", t.major, t.minor, t.patch)
 end
 
@@ -105,6 +112,7 @@ local function isRepoVerNewer(repo_ver, installed_ver)
 end
 
 -- Show a list of all available packages from the Capsule repository.
+-- TODO Make this show if a package is a library or a user installed app.
 local function showAvailableList()
     if not fs.exists(repo_path) then
         logs.critical("Cannot load repository. (Perhaps time to 'update'?)")
@@ -185,7 +193,8 @@ local function showInstalledList()
             if key == v.name then
                 local sb2 = stringBuilder()
                 local repo_version_str = v.version.major .. "." .. v.version.minor .. "." .. v.version.patch
-                local local_version_str = package.version.major .. "." .. package.version.minor .. "." .. package.version.patch
+                local local_version_str =
+                    package.version.major .. "." .. package.version.minor .. "." .. package.version.patch
                 sb:append("- Name: " .. v.name)
                 sb:append("  Installed Version: " .. local_version_str)
                 sb:append("  Repository Version: " .. repo_version_str)
@@ -229,7 +238,7 @@ local function showAllPackages()
     local packages = textutils.unserialize(handle.readAll())
     handle.close()
 
-    if not packages then            -- return just available if no installed found
+    if not packages then -- return just available if no installed found
         return showAvailableList()
     end
 
@@ -243,7 +252,8 @@ local function showAllPackages()
                 found = true
                 local sb2 = stringBuilder()
                 local repo_version_str = v.version.major .. "." .. v.version.minor .. "." .. v.version.patch
-                local local_version_str = package.version.major .. "." .. package.version.minor .. "." .. package.version.patch
+                local local_version_str =
+                    package.version.major .. "." .. package.version.minor .. "." .. package.version.patch
                 sb:append("- Name: " .. v.name)
                 sb:append("  Installed Version: " .. local_version_str)
                 sb:append("  Repository Version: " .. repo_version_str)
@@ -278,7 +288,6 @@ local function getRepositoryList(params)
     if not installedOnly and not availableOnly and not all then
         availableOnly = true
     end
-
 
     if all then
         return showAllPackages()
@@ -334,7 +343,7 @@ local function updateRepository(repository)
     -- send GET http request
     logs.info("Fetching with " .. repository)
     local request = http.get(repository)
-    
+
     -- if not valid request arrived
     if not request then
         logs.critical("Cannot get response from repository server.")
@@ -356,19 +365,19 @@ end
 -- Install a package
 -- @param package_name string The name of the package to install.
 local function installPackage(package_name)
-
     local handle = fs.open(repo_path, "r")
     if not handle then
         logs.critical("Cannot open repository file.")
         error("", 0)
     end
-    
+
     local repo = textutils.unserializeJSON(handle.readAll())
     if not repo then
         logs.critical("Cannot read repository file.")
         error("", 0)
     end
 
+    -- Search for the package
     logs.info("Searching for " .. package_name:lower() .. "...")
 
     local package = {}
@@ -383,6 +392,7 @@ local function installPackage(package_name)
 
     local attempts = 1
 
+    
     ::redownload::
 
     if attempts > 4 then
@@ -403,6 +413,7 @@ local function installPackage(package_name)
 
     local name = package_name:sub(-4) == ".lua" and package_name or package_name .. ".lua"
 
+    -- Validate the package checksum
     logs.info("Validation file integrity...")
 
     local checksum = lib_sha.sha256(data)
@@ -416,6 +427,7 @@ local function installPackage(package_name)
 
     logs.info("File validated, saving...")
 
+    -- Create the package.list file if it doesn't exist with these values
     if lib_config.createIfNotExists(packages_path) then
         local list = {
             [package.name] = {
@@ -424,12 +436,16 @@ local function installPackage(package_name)
                 author = package.author,
                 desc = package.desc,
                 dwn_lnk = package.dwn_lnk,
-                checksum = package.checksum
+                checksum = package.checksum,
+                -- Added for checking if the app is a 'program' or 'library'.
+                category = package.category
             }
         }
 
         lib_config.save(list, packages_path)
+        
     else
+        -- If the package.list already exists, load it.
         local list = lib_config.load(packages_path)
         list[package.name] = {
             version = package.version,
@@ -437,19 +453,33 @@ local function installPackage(package_name)
             author = package.author,
             desc = package.desc,
             dwn_lnk = package.dwn_lnk,
-            checksum = package.checksum
+            checksum = package.checksum,
+            -- Added for checking if the app is a 'program' or 'library'.
+            category = package.category
         }
         lib_config.save(list, packages_path)
     end
 
     logs.debug("package.list updated")
 
-    local handle = fs.open(fs.combine(install_path, name), "w")
-    handle.write(data)
-    handle.close()
+    -- Make this choose the path depending on if the category is program or library.
+    -- This works!
+    if package.category == "program" then
+        -- Install package to /usr/bin folder.
+        local handle = fs.open(fs.combine(install_path, name), "w")
+        handle.write(data)
+        handle.close()
+        logs.info("Package " .. package_name .. " installed successfully")
 
-    logs.info("Package " .. package_name .. " installed successfully")
+    
+    elseif package.category == "library" then
+        -- Install package to /lib folder
+        local handle = fs.open(fs.combine(library_install_path, name), "w")
+        handle.write(data)
+        handle.close()
 
+        logs.info("Library " .. package_name .. " installed successfully")
+    end
 end
 
 -- Calculate a file checksum.
@@ -484,14 +514,12 @@ local function calculateChecksum(path)
     handle = fs.open("checksum.txt", "w")
     handle.write(checksum)
     handle.close()
-    
 end
 
 -- Redownload a file
 -- @param package_url The url of the file.
 -- @param package_checksum The SHA256 checksum of the file.
 local function redownloadFile(package_url, package_checksum)
-
     local attempts = 1
 
     ::redownload1::
@@ -658,6 +686,7 @@ local function upgradePackages()
 
                     local attempts = 1
 
+                    -- Try to redownload the file
                     ::redownload1::
 
                     if attempts > 4 then
@@ -676,6 +705,7 @@ local function upgradePackages()
 
                     local data = request.readAll()
 
+                    -- Validate the package checksum
                     logs.info("Validation file integrity...")
 
                     local checksum = lib_sha.sha256(data)
@@ -689,6 +719,12 @@ local function upgradePackages()
 
                     logs.info("File validated, saving...")
 
+                    -- Install the file
+                    -- if package.category == "program" then
+                    -- elseif if package.category == "library" then
+                    -- end
+                    
+
                     local handle = fs.open(v.path, "w")
                     handle.write(data)
                     handle.close()
@@ -700,10 +736,11 @@ local function upgradePackages()
                         desc = p.desc,
                         dwn_lnk = p.dwn_lnk,
                         checksum = p.checksum
+                        category = package.category
                     }
 
                     lib_config.save(package_list, packages_path)
-                    
+
                     logs.info("Package " .. key .. " has been upgraded.")
 
                     upgraded = upgraded + 1
@@ -738,16 +775,18 @@ args_parser:addOption("checksum")
 args_parser:addOption("validate")
 args_parser:addOption("remove")
 
-logs.configure({
-    logToFile = false,              -- whether to write logs to file
-    stampScreen = false,            -- whether to show timestamps on screen
-    filePath = "/tmp/capsule.log",  -- path where to store logs if first parameter is true
-    logLevel = logs.levels.INFO     -- level threshold (overriden by verbose flag) 
-})
+logs.configure(
+    {
+        logToFile = false, -- whether to write logs to file
+        stampScreen = false, -- whether to show timestamps on screen
+        filePath = "/tmp/capsule.log", -- path where to store logs if first parameter is true
+        logLevel = logs.levels.INFO -- level threshold (overriden by verbose flag)
+    }
+)
 
 -- End of init code
 
-args_parser:parse({ ... })
+args_parser:parse({...})
 
 local flags = args_parser:getFlags()
 local options = args_parser:getOptions()
@@ -757,7 +796,7 @@ local options = args_parser:getOptions()
 ---
 
 if flags["version"] then
-    print("Capsule "..tostring(version))
+    print("Capsule " .. tostring(version))
     return
 end
 
