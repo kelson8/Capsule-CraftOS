@@ -735,7 +735,7 @@ local function upgradePackages()
                         author = p.author,
                         desc = p.desc,
                         dwn_lnk = p.dwn_lnk,
-                        checksum = p.checksum
+                        checksum = p.checksum,
                         category = package.category
                     }
 
