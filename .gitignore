@@ -1,1 +1,10 @@
 misc/
+
+# I will add these later
+src/Create
+src/Logger
+src/Rednet
+src/Turtle
+
+# Extra log files
+*.log
